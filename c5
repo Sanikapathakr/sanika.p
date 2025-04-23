@@ -1,0 +1,52 @@
+//CODE 5:
+#include<iostream>
+using namespace std;
+
+class books{
+    public:
+    string author, title, pub;
+    int price;
+    
+    void lib(){
+        int n;
+        int availc=10;
+        int reqc;
+        int a;
+        int tot=0;
+        cout<<"Number of boooks you wish to buy: "<<endl;
+        cin>>n;
+        for(int i=1;i<=n;i++){
+        cout<<"Enter book name: "<<endl;
+        cin>>title;
+        cout<<"Enter author: "<<endl;
+        cin>>author;
+        cout<<"Enter publisher: "<<endl;
+        cin>>pub;
+        cout<<"Enter price for books: "<<endl;
+        cin>>a;
+        tot+=a;
+        cout<<tot<<endl;
+
+        }
+        cout<<"Enter the number of copies you require"<<endl;
+        cin>>reqc;
+        if(availc >= reqc){
+                cout<<"Book is available! "<<endl;
+                //cin>>a;
+            }
+        else{
+            cout<<"Sory this book isnt avalable."<<endl;
+        }
+        cout<<reqc * tot;
+        
+        
+        
+    }
+};
+
+
+int main(){
+    books b;
+    b.lib();
+    return 0;
+}
