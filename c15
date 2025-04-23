@@ -1,0 +1,30 @@
+//CODE18
+#include<iostream>
+using namespace std;
+
+class Student {
+    string name;
+
+public:
+    Student() {
+        name = "Unknown";
+    }
+
+    Student(string n) {
+        name = n;
+    }
+
+    void printName() {
+        cout << "Student Name: " << name << endl;
+    }
+};
+
+int main() {
+    Student s1; 
+    Student s2("Shrawani"); 
+
+    s1.printName();
+    s2.printName();
+
+    return 0;
+}
