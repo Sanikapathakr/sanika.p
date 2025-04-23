@@ -1,0 +1,85 @@
+//CODE 13
+#include<iostream>
+using namespace std;
+
+class Marks {
+public:
+    static int rollGenerator; // for auto roll number
+    int rollNo;
+    string name;
+
+    void getDetails() {
+        rollNo = ++rollGenerator;
+        cout << "Enter name of student: ";
+        cin >> name;
+    }
+};
+
+// Initialize static variable
+int Marks::rollGenerator = 0;
+
+class Physics : public Marks {
+public:
+    int phyMarks;
+    void getPhysicsMarks() {
+        cout << "Enter Physics marks: ";
+        cin >> phyMarks;
+    }
+};
+
+class Chemistry : public Physics {
+public:
+    int chemMarks;
+    void getChemistryMarks() {
+        cout << "Enter Chemistry marks: ";
+        cin >> chemMarks;
+    }
+};
+
+class Mathematics : public Chemistry {
+public:
+    int mathMarks;
+    void getMathMarks() {
+        cout << "Enter Mathematics marks: ";
+        cin >> mathMarks;
+    }
+
+    int getTotal() {
+        return phyMarks + chemMarks + mathMarks;
+    }
+
+    void display() {
+        cout << "Roll No: " << rollNo << ", Name: " << name << endl;
+        cout << "Physics: " << phyMarks << ", Chemistry: " << chemMarks << ", Math: " << mathMarks << endl;
+        cout << "Total Marks: " << getTotal() << endl;
+        cout << "-----------------------------" << endl;
+    }
+};
+
+int main() {
+    int n;
+    cout << "Enter number of students: ";
+    cin >> n;
+
+    Mathematics students[50]; // assuming max 50 students
+    int totalClassMarks = 0;
+
+    for (int i = 0; i < n; i++) {
+        cout << "\nEnter details for student " << i + 1 << ":" << endl;
+        students[i].getDetails();
+        students[i].getPhysicsMarks();
+        students[i].getChemistryMarks();
+        students[i].getMathMarks();
+        totalClassMarks += students[i].getTotal();
+    }
+
+    cout << "\n========= STUDENT REPORT =========" << endl;
+    for (int i = 0; i < n; i++) {
+        students[i].display();
+    }
+
+    float average = (float)totalClassMarks / n;
+    cout << "Average Marks of Class: " << average << endl;
+
+    return 0;
+}
