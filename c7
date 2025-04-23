@@ -1,0 +1,91 @@
+//CODE7
+#include<iostream>
+using namespace std;
+
+// Base class: RBI
+class RBI {
+protected:
+    float minInterestRate;
+    float minBalance;
+    float maxWithdrawal;
+
+public:
+    RBI() {
+        minInterestRate = 4.0;     // 4% minimum interest rate
+        minBalance = 1000.0;       // Rs. 1000 minimum balance
+        maxWithdrawal = 25000.0;   // Rs. 25,000 max withdrawal per day
+    }
+
+    void showGuidelines() {
+        cout << "\n--- RBI Guidelines ---" << endl;
+        cout << "Minimum Interest Rate: " << minInterestRate << "%" << endl;
+        cout << "Minimum Balance: Rs. " << minBalance << endl;
+        cout << "Maximum Withdrawal Limit per Day: Rs. " << maxWithdrawal << endl;
+    }
+};
+
+// Derived Bank: SBI
+class SBI : public RBI {
+private:
+    float sbiInterestRate;
+public:
+    SBI() {
+        sbiInterestRate = 4.5; // SBI offers 4.5% interest
+    }
+
+    void showDetails() {
+        cout << "\n--- SBI Bank ---" << endl;
+        cout << "SBI Interest Rate: " << sbiInterestRate << "%" << endl;
+        cout << "Minimum Balance: Rs. " << minBalance << endl;
+        cout << "Max Withdrawal Limit: Rs. " << maxWithdrawal << endl;
+    }
+};
+
+// Derived Bank: ICICI
+class ICICI : public RBI {
+private:
+    float iciciInterestRate;
+public:
+    ICICI() {
+        iciciInterestRate = 5.0; // ICICI offers 5% interest
+    }
+
+    void showDetails() {
+        cout << "\n--- ICICI Bank ---" << endl;
+        cout << "ICICI Interest Rate: " << iciciInterestRate << "%" << endl;
+        cout << "Minimum Balance: Rs. " << minBalance << endl;
+        cout << "Max Withdrawal Limit: Rs. " << maxWithdrawal << endl;
+    }
+};
+
+// Derived Bank: PNB
+class PNB : public RBI {
+private:
+    float pnbInterestRate;
+public:
+    PNB() {
+        pnbInterestRate = 4.2; // PNB offers 4.2% interest
+    }
+
+    void showDetails() {
+        cout << "\n--- PNB Bank ---" << endl;
+        cout << "PNB Interest Rate: " << pnbInterestRate << "%" << endl;
+        cout << "Minimum Balance: Rs. " << minBalance << endl;
+        cout << "Max Withdrawal Limit: Rs. " << maxWithdrawal << endl;
+    }
+};
+int main() {
+    RBI r;
+    r.showGuidelines();
+
+    SBI s;
+    s.showDetails();
+
+    ICICI i;
+    i.showDetails();
+
+    PNB p;
+    p.showDetails();
+
+    return 0;
+}
