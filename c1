@@ -1,0 +1,132 @@
+//CODE 1 :
+#include<iostream>
+using namespace std;
+
+class bank{
+    public: 
+    int reqam = 12000;
+    string name;
+    int accn;
+    int var;
+
+    void cust_name(){
+        cout<<"Please enter your name: "<<endl;
+        cin>>name;
+    }
+
+    void acc_num(){
+        cout<<"Please enter your account number: "<<endl;
+        cin>>accn;
+    }
+
+    void type(){
+        cout<<"Please enter 1 or 2: "<<endl;
+        cin>>var;
+        switch(var){
+            case 1:
+            cout<<"Current account opened."<<endl;
+            break;
+            case 2:
+            cout<<"Savings account opened"<<endl;
+            break;
+            default:
+            cout<<"Invalid input."<<endl;
+            break;
+         }
+    }
+};
+
+class cur_accn: public bank{
+    public: 
+    int cusnum;
+    int ver;
+    int num;
+    
+    void display(){
+        cout<<"Please enter your current bank balance in this account: "<<endl;
+        cin>>cusnum;
+        cout<<"Reqd bank balance is "<<reqam<<endl;
+        if(cusnum < reqam){
+            cout<<"insufficient balance.A service charge of 100 rs will be imposed.Updated balance: "<< cusnum - 100<<endl;
+        }
+        else{
+            cout<<"Do you wish to deposit(1) or withdraw(2)?"<<endl;
+            cin>>ver;
+        }
+        
+        if(ver==1){
+            cout<<"how muc do u wish to deposit?"<<endl;
+            cin>>num;
+            cout<<"updated balance: "<<num + cusnum<<endl;
+            //break;
+        }
+        
+        else if(ver==2){
+            cout<<"how muc do u wish to withdraw?"<<endl;
+            cin>>num;
+            cout<<"updated balance: "<<cusnum - num<<endl;
+            //break;
+        }
+        else{
+            cout<<"Invalid input.";
+            }//break;
+        
+    }
+};
+
+class sav_accn: public bank{
+    
+    public:
+    int dep;
+    int cusnum;
+    int ver;
+    int var;
+    
+    void sav(){
+        cout<<"Enter your savings account balance: "<<endl;
+        cin>>cusnum;
+            double inter= 0.02 * cusnum;
+
+        cout<<"Do you wish to deposit(1) or withdraw(2)?"<<endl;
+        cin>>ver;
+        
+        if(ver==1){
+            cout<<"How much u wish to deposit?"<<endl;
+            cin>>dep;
+            cout<<"Updated balance: "<<cusnum + dep<<endl;
+            cout<<"You will be serviced with 2% every year of your total amount.Total receiving amount: "<<inter<<endl;
+        }
+        
+        if(ver==2){
+            cout<<"How much u wish to withdraw?"<<endl;
+            cin>>dep;
+            cout<<"Updated balance: "<<cusnum - dep<<endl;
+            cout<<"You will be serviced with 2% every year of your total amount.Total receiving amount: "<<inter<<endl;
+    }
+    
+}
+
+};
+
+int main(){
+    bank b;
+    b.cust_name();
+    b.acc_num();
+    b.type();
+    int var;
+    if(b.var==1){
+    cur_accn ca;
+        ca.name = b.name;    
+        ca.accn = b.accn;
+        ca.display();
+    }
+    else if (b.var == 2) {
+        sav_accn sa;
+        sa.name = b.name;     
+        sa.accn = b.accn;
+        sa.sav();
+    }
+    
+    
+    return 0;
+}
