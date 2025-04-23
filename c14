@@ -1,0 +1,37 @@
+//CODE 19
+#include<iostream>
+using namespace std;
+
+class rect{
+    public:
+    int l,b,a,g,d;
+    
+    rect(){
+       l=0;
+       b=0;
+   }
+   
+    rect(int g,int d){
+        l=g;
+        b=d;
+    }
+    
+    rect(int a){
+        l=a;
+        b=a;
+    }
+    
+    void calc(){
+        cout<<l*b<<endl;
+    }
+};
+
+int main(){
+    rect y;
+    y.calc();
+    rect c(10,8);
+    c.calc();
+    rect j(4);
+    j.calc();
+    return 0;
+}
