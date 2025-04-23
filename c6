@@ -1,0 +1,41 @@
+//CODE 6:
+#include<iostream>
+using namespace std;
+class SimpleCircle{
+    public:
+    int itsRadius;
+    SimpleCircle(){
+        itsRadius=5;
+        cout<<"hi"<<endl;
+    }
+    SimpleCircle(int r1){
+        itsRadius=r1;
+        //this-->itsRadius=r2;
+        cout<<r1++<<endl;
+        cout<<++r1<<endl;
+    }
+    
+    SimpleCircle(const SimpleCircle &t){
+        int r1=5;
+        cout<<"Copy constructor created."<<endl;
+        r1+=3;
+        cout<<r1<<endl;
+    }
+    
+    
+    ~SimpleCircle(){
+        cout<<"destructed."<<endl;
+    }
+    
+    
+};
+int main(){
+    
+    SimpleCircle sc;
+    SimpleCircle s(9);
+    SimpleCircle s1(sc);
+
+
+    
+    return 0;
+}
