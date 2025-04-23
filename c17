@@ -1,0 +1,151 @@
+//CODe14
+#include<iostream>
+#include<string>
+using namespace std;
+
+// Base class Vehicle
+class Vehicle {
+public:
+    float mileage;
+    float price;
+
+    // Constructor to initialize mileage and price
+    Vehicle(float m, float p) {
+        mileage = m;
+        price = p;
+    }
+
+    void displayVehicleInfo() {
+        cout << "Mileage: " << mileage << " km/l" << endl;
+        cout << "Price: Rs. " << price << endl;
+    }
+};
+
+// Car class derived from Vehicle
+class Car : public Vehicle {
+public:
+    float ownershipCost;
+    int warranty;  // in years
+    int seatingCapacity;
+    string fuelType;
+
+    // Constructor to initialize Car specific details
+    Car(float m, float p, float oc, int w, int sc, string ft)
+        : Vehicle(m, p), ownershipCost(oc), warranty(w), seatingCapacity(sc), fuelType(ft) {}
+
+    void displayCarInfo() {
+        displayVehicleInfo();
+        cout << "Ownership Cost: Rs. " << ownershipCost << " per year" << endl;
+        cout << "Warranty: " << warranty << " years" << endl;
+        cout << "Seating Capacity: " << seatingCapacity << endl;
+        cout << "Fuel Type: " << fuelType << endl;
+    }
+};
+
+// Audi class derived from Car
+class Audi : public Car {
+public:
+    string modelType;
+
+    // Constructor to initialize Audi specific details
+    Audi(float m, float p, float oc, int w, int sc, string ft, string mt)
+        : Car(m, p, oc, w, sc, ft), modelType(mt) {}
+
+    void displayAudiInfo() {
+        cout << "\n--- Audi Car ---" << endl;
+        cout << "Model Type: " << modelType << endl;
+        displayCarInfo();
+    }
+};
+
+// Ford class derived from Car
+class Ford : public Car {
+public:
+    string modelType;
+
+    // Constructor to initialize Ford specific details
+    Ford(float m, float p, float oc, int w, int sc, string ft, string mt)
+        : Car(m, p, oc, w, sc, ft), modelType(mt) {}
+
+    void displayFordInfo() {
+        cout << "\n--- Ford Car ---" << endl;
+        cout << "Model Type: " << modelType << endl;
+        displayCarInfo();
+    }
+};
+
+// Bike class derived from Vehicle
+class Bike : public Vehicle {
+public:
+    int cylinders;
+    int gears;
+    string coolingType;
+    string wheelType;
+    float fuelTankSize;
+
+    // Constructor to initialize Bike specific details
+    Bike(float m, float p, int c, int g, string ct, string wt, float fts)
+        : Vehicle(m, p), cylinders(c), gears(g), coolingType(ct), wheelType(wt), fuelTankSize(fts) {}
+
+    void displayBikeInfo() {
+        displayVehicleInfo();
+        cout << "Cylinders: " << cylinders << endl;
+        cout << "Gears: " << gears << endl;
+        cout << "Cooling Type: " << coolingType << endl;
+        cout << "Wheel Type: " << wheelType << endl;
+        cout << "Fuel Tank Size: " << fuelTankSize << " inches" << endl;
+    }
+};
+
+// Bajaj class derived from Bike
+class Bajaj : public Bike {
+public:
+    string makeType;
+
+    // Constructor to initialize Bajaj specific details
+    Bajaj(float m, float p, int c, int g, string ct, string wt, float fts, string mt)
+        : Bike(m, p, c, g, ct, wt, fts), makeType(mt) {}
+
+    void displayBajajInfo() {
+        cout << "\n--- Bajaj Bike ---" << endl;
+        cout << "Make Type: " << makeType << endl;
+        displayBikeInfo();
+    }
+};
+
+// TVS class derived from Bike
+class TVS : public Bike {
+public:
+    string makeType;
+
+    // Constructor to initialize TVS specific details
+    TVS(float m, float p, int c, int g, string ct, string wt, float fts, string mt)
+        : Bike(m, p, c, g, ct, wt, fts), makeType(mt) {}
+
+    void displayTVSInfo() {
+        cout << "\n--- TVS Bike ---" << endl;
+        cout << "Make Type: " << makeType << endl;
+        displayBikeInfo();
+    }
+};
+
+// Main function
+int main() {
+    // Creating Audi and Ford Car objects
+    Audi audi(12.5, 3000000, 50000, 5, 5, "Diesel", "Q7");
+    Ford ford(15.0, 1500000, 40000, 3, 5, "Petrol", "Endeavour");
+
+    // Creating Bajaj and TVS Bike objects
+    Bajaj bajaj(40.0, 90000, 1, 5, "Air", "Alloys", 12, "Pulsar");
+    TVS tvs(45.0, 80000, 1, 5, "Liquid", "Alloys", 11, "Apache");
+
+    // Displaying information of Audi and Ford Cars
+    audi.displayAudiInfo();
+    ford.displayFordInfo();
+
+    // Displaying information of Bajaj and TVS Bikes
+    bajaj.displayBajajInfo();
+    tvs.displayTVSInfo();
+
+    return 0;
+}
