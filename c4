@@ -1,0 +1,118 @@
+//CODE4
+#include<iostream>
+using namespace std;
+
+// Base class
+class RBI {
+protected:
+    float min_balance;
+    float interest_rate;
+
+public:
+    RBI() {
+        min_balance = 1000;
+        interest_rate = 4.0; 
+    }
+
+    void rbiGuidelines() {
+        cout << "RBI Guidelines:\n";
+        cout << "- Minimum Balance: Rs. " << min_balance << endl;
+        cout << "- Interest Rate: " << interest_rate << "%" << endl;
+    }
+};
+
+// Customer class
+class Customer {
+public:
+    string name;
+    int age;
+
+    void getCustomerDetails() {
+        cout << "Enter customer name: ";
+        cin >> name;
+        cout << "Enter age: ";
+        cin >> age;
+    }
+
+    void showCustomerDetails() {
+        cout << "Customer Name: " << name << ", Age: " << age << endl;
+    }
+};
+
+// Account class
+class Account {
+protected:
+    int acc_no;
+    float balance;
+
+public:
+    Account() {
+        acc_no = 0;
+        balance = 0;
+    }
+
+    void createAccount(int accNum, float bal) {
+        acc_no = accNum;
+        balance = bal;
+    }
+
+    void showAccount() {
+        cout << "Account No: " << acc_no << ", Balance: Rs. " << balance << endl;
+    }
+
+    float getBalance() {
+        return balance;
+    }
+};
+
+// Derived banks
+class SBI : public RBI, public Customer, public Account {
+public:
+    void displayDetails() {
+        cout << "\nSBI Account\n";
+        showCustomerDetails();
+        showAccount();
+        rbiGuidelines();
+    }
+};
+
+class ICICI : public RBI, public Customer, public Account {
+public:
+    void displayDetails() {
+        cout << "\nICICI Account\n";
+        showCustomerDetails();
+        showAccount();
+        rbiGuidelines();
+    }
+};
+
+class PNB : public RBI, public Customer, public Account {
+public:
+    void displayDetails() {
+        cout << "\nPNB Account\n";
+        showCustomerDetails();
+        showAccount();
+        rbiGuidelines();
+    }
+};
+int main() {
+    SBI s;
+    cout << "Create SBI Account:\n";
+    s.getCustomerDetails();
+    s.createAccount(1001, 5000);
+    s.displayDetails();
+
+    ICICI i;
+    cout << "\nCreate ICICI Account:\n";
+    i.getCustomerDetails();
+    i.createAccount(2001, 3000);
+    i.displayDetails();
+
+    PNB p;
+    cout << "\nCreate PNB Account:\n";
+    p.getCustomerDetails();
+    p.createAccount(3001, 2500);
+    p.displayDetails();
+
+    return 0;
+}
