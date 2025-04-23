@@ -1,0 +1,46 @@
+//CODE 8
+#include<iostream>
+using namespace std;
+
+class theatre {
+public:
+    int p1, p2;
+    int n, tk = 30;
+
+    void book() {
+        cout << "Enter the performance you wish to see: SeeSaw(1), Dogs(2), Friends(3)" << endl;
+        cin >> n;
+
+        cout << "Do you wish to confirm your booking for this program? confirm(1) or exit(2)" << endl;
+        cin >> p1;
+
+        if (p1 == 1) {
+            string show;
+            if (n == 1) show = "SeeSaw";
+            else if (n == 2) show = "Dogs";
+            else if (n == 3) show = "Friends";
+            else {
+                cout << "Invalid show selected." << endl;
+                return;
+            }
+
+            cout << "Booking confirmed for " << show << ". How many tickets do you wish to buy? " << endl;
+            cin >> p2;
+
+            if (p2 > tk) {
+                cout << "Sorry, limited seats are available." << endl;
+            } else {
+                tk -= p2; // Deduct booked tickets
+                cout << "Booking confirmed! Updated current seats available: " << tk << endl;
+            }
+        } else {
+            cout << "Exited." << endl;
+        }
+    }
+};
+
+int main() {
+    theatre t;
+    t.book();
+    return 0;
+}
