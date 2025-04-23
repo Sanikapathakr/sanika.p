@@ -1,0 +1,58 @@
+//CODE 8
+#include <iostream>
+using namespace std;
+
+class shape{
+    public:
+    void disp(){
+        cout<<"I am a shape"<<endl;
+    }
+};
+
+
+class polygon:public shape{
+    public:
+    void disp(){
+        cout<<"I am a polygon"<<endl;
+    }
+};
+
+
+class rectangle{
+    public:
+    void disp(){
+        cout<<"I am a rectangle"<<endl;
+    }
+};
+
+
+class triangle{
+    public:
+    void disp(){
+        cout<<"I am a triangle"<<endl;
+    }
+};
+
+
+class square{
+    public:
+    void disp(){
+        cout<<"I am a square"<<endl;
+    }
+};
+
+ 
+int main(){
+    shape s;
+    s.disp();
+    polygon p;
+    p.disp();
+    rectangle r;
+    r.disp();
+    triangle t;
+    t.disp();
+    square u;
+    u.disp();
+    return 0;
+    
+}
