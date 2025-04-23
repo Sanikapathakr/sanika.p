@@ -1,0 +1,75 @@
+//CODE
+#include<iostream>
+using namespace std;
+
+class Book {
+    int classMark;
+    string title;
+    string status; 
+
+    static int totalBooks;
+    static int booksOnLoan;
+    static int booksReserved;
+
+public:
+    Book(int cm, string t) {
+        classMark = cm;
+        title = t;
+        status = "available";
+        totalBooks++;
+    }
+
+    void checkOut() {
+        if (status == "available") {
+            status = "on loan";
+            booksOnLoan++;
+            cout << "Book '" << title << "' checked out successfully.\n";
+        } else {
+            cout << "Book is not available to check out.\n";
+        }
+    }
+
+    void reserve() {
+        if (status == "on loan") {
+            status = "reserved";
+            booksReserved++;
+            cout << "Book '" << title << "' reserved successfully.\n";
+        } else {
+            cout << "Book is not on loan. You can't reserve it.\n";
+        }
+    }
+
+    void inquireStatus() {
+        cout << "Book: " << title << " | Class Mark: " << classMark 
+             << " | Status: " << status << endl;
+    }
+
+    static void librarySummary() {
+        cout << "\nLibrary Summary\n";
+        cout << "Total books in library: " << totalBooks << endl;
+        cout << "Books on loan: " << booksOnLoan << endl;
+        cout << "Books reserved: " << booksReserved << endl;
+        cout << "Books available on shelves: " 
+             << (totalBooks - booksOnLoan - booksReserved) << endl;
+    }
+};
+
+int Book::totalBooks = 0;
+int Book::booksOnLoan = 0;
+int Book::booksReserved = 0;
+
+int main() {
+    Book b1(101, "Mathematics");
+    Book b2(102, "Physics");
+    Book b3(103, "Chemistry");
+
+    b1.checkOut();
+    b1.reserve();
+
+    b2.inquireStatus();
+    b1.inquireStatus();
+
+    Book::librarySummary();
+
+    return 0;
+}
