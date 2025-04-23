@@ -1,0 +1,36 @@
+//CODE 10
+#include<iostream>
+using namespace std;
+
+class Employee{
+    private:
+    string emp_name1="Rahul";
+    string emp_name2="Shrawani";
+    
+    public:
+    int yos,sal,age;
+    int n=2,i;
+    
+    void info(){
+        cout<<"Enter age: "<<endl;
+        cin>>age;
+        cout<<"Enter salary: "<<endl;
+        cin>>sal;
+        cout<<"Enter years of service: "<<endl;
+        cin>>yos;
+        cout<<"Information gathered: "<<endl;
+        cout<<age<<endl;
+        cout<<sal<<endl;
+        cout<<yos<<endl;
+    }
+};
+
+int main(){
+    int n=2,i;
+    Employee e;
+    for(i=1;i<=n;i++){
+        e.info();
+    }
+    return 0;
+
+}
