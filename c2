@@ -1,0 +1,79 @@
+CODE 2:
+include<iostream>
+using namespace std;
+
+class staff{
+    public:
+    int code=0;
+    string name;
+    int age;
+    void display(){
+        cout<<"Enter code of the employee: "<<endl;
+        cin>>code;
+    }
+};
+
+class teacher: public staff{
+    public:
+    string sub;
+    int code,age=40 ;
+    
+    void display(string sub){
+        cout<<"Please enter the name of teacher whose database you wish to see: "<<endl;
+        cin>>name;
+        cout<<"Please enter subject shes supervising for: "<<endl;
+        cin>>sub;
+        cout<<name<<endl;
+        cout<<sub<<endl;
+        cout<<age<<endl;
+        
+    }
+    
+};
+
+class typist: public staff{
+    public:
+    //int sped;
+    int age=34;
+    string name;
+    
+    void emp(){
+        cout<<"Enter name: "<<endl;
+        cin>>name;
+        cout<<age<<endl;
+        cout<<"Typing speed is 60 words per min."<<endl;
+        
+    }
+    
+};
+
+class officer:public staff{
+    public:
+    string post;
+     void pol(){
+         cout<<"Enter name of officer: "<<endl;
+         cin>>name;
+         cout<<"Age: "<<endl;
+         cin>>age;
+         cout<<"Enter posting: "<<endl;
+         cin>>post;
+         cout<<name<<endl;
+         cout<<age<<endl;
+         cout<<post;
+     }
+};
+
+int main(){
+    staff s;
+    s.display();
+    teacher t;
+    string sub;
+    t.display(sub);
+    typist yp;
+    yp.emp();
+    officer of;
+    of.pol();
+     
+
+    return 0;
+}
