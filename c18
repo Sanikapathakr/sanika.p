@@ -1,0 +1,147 @@
+//CODE 18
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Base class RBI (Reserve Bank of India)
+class RBI {
+public:
+    // RBI guidelines
+    float minInterestRate;
+    float minBalance;
+    float maxWithdrawLimit;
+
+    // Constructor to initialize RBI's guidelines
+    RBI(float interestRate, float balance, float withdrawLimit) {
+        minInterestRate = interestRate;
+        minBalance = balance;
+        maxWithdrawLimit = withdrawLimit;
+    }
+
+    // Display RBI guidelines
+    void displayGuidelines() {
+        cout << "RBI Guidelines:" << endl;
+        cout << "Minimum Interest Rate: " << minInterestRate << "%" << endl;
+        cout << "Minimum Balance: Rs. " << minBalance << endl;
+        cout << "Maximum Withdrawal Limit: Rs. " << maxWithdrawLimit << endl;
+    }
+};
+
+// Derived class for SBI (State Bank of India)
+class SBI : public RBI {
+public:
+    float interestRate;
+
+    // Constructor for SBI bank
+    SBI(float interestRate) : RBI(4.0, 1000, 50000) {
+        this->interestRate = interestRate;
+    }
+
+    void displayBankInfo() {
+        cout << "\nSBI Bank:" << endl;
+        displayGuidelines();
+        cout << "Interest Rate: " << interestRate << "%" << endl;
+    }
+};
+
+// Derived class for ICICI (Industrial Credit and Investment Corporation of India)
+class ICICI : public RBI {
+public:
+    float interestRate;
+
+    // Constructor for ICICI bank
+    ICICI(float interestRate) : RBI(4.0, 2000, 100000) {
+        this->interestRate = interestRate;
+    }
+
+    void displayBankInfo() {
+        cout << "\nICICI Bank:" << endl;
+        displayGuidelines();
+        cout << "Interest Rate: " << interestRate << "%" << endl;
+    }
+};
+
+// Derived class for PNB (Punjab National Bank)
+class PNB : public RBI {
+public:
+    float interestRate;
+
+    // Constructor for PNB bank
+    PNB(float interestRate) : RBI(4.0, 1500, 70000) {
+        this->interestRate = interestRate;
+    }
+
+    void displayBankInfo() {
+        cout << "\nPNB Bank:" << endl;
+        displayGuidelines();
+        cout << "Interest Rate: " << interestRate << "%" << endl;
+    }
+};
+
+// Account class to handle customer accounts
+class Account {
+public:
+    string accountHolder;
+    int accountNumber;
+    float balance;
+
+    // Constructor to initialize account details
+    Account(string holder, int accNumber, float initialBalance) {
+        accountHolder = holder;
+        accountNumber = accNumber;
+        balance = initialBalance;
+    }
+
+    // Deposit method
+    void deposit(float amount) {
+        balance += amount;
+        cout << "Deposited Rs. " << amount << ". New balance: Rs. " << balance << endl;
+    }
+
+    // Withdraw method
+    void withdraw(float amount, float maxLimit) {
+        if (amount > maxLimit) {
+            cout << "Error: Amount exceeds the withdrawal limit of Rs. " << maxLimit << endl;
+        } else if (amount > balance) {
+            cout << "Error: Insufficient balance!" << endl;
+        } else {
+            balance -= amount;
+            cout << "Withdrawn Rs. " << amount << ". New balance: Rs. " << balance << endl;
+        }
+    }
+
+    // Display account details
+    void displayAccountDetails() {
+        cout << "\nAccount Holder: " << accountHolder << endl;
+        cout << "Account Number: " << accountNumber << endl;
+        cout << "Current Balance: Rs. " << balance << endl;
+    }
+};
+
+// Main function
+int main() {
+    // Creating bank objects with different interest rates
+    SBI sbiBank(5.0);      // SBI with 5% interest rate
+    ICICI iciciBank(6.0);  // ICICI with 6% interest rate
+    PNB pnbBank(4.5);      // PNB with 4.5% interest rate
+
+    // Displaying information of each bank
+    sbiBank.displayBankInfo();
+    iciciBank.displayBankInfo();
+    pnbBank.displayBankInfo();
+
+    // Creating a customer account
+    Account customerAccount("John Doe", 12345, 5000);
+
+    // Displaying account details
+    customerAccount.displayAccountDetails();
+
+    // Performing transactions
+    customerAccount.deposit(2000);  // Deposit Rs. 2000
+    customerAccount.withdraw(1000, 50000);  // Withdraw Rs. 1000 (within limit)
+
+    // Displaying updated account details
+    customerAccount.displayAccountDetails();
+
+    return 0;
+}
